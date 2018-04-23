@@ -7,9 +7,9 @@ const currentExport = {
   pageExtensions: ["jsx", "js", "ts", "tsx"],
   webpack: (config, options) => {
     const { dir, defaultLoaders, dev, isServer } = options
-    config.resolve.extensions = [".ts", ".tsx", ".js", ".json"]
+    config.resolve.extensions = [".ts", ".tsx", ".js", ".jsx", ".json"]
 
-    // HMR
+    // HMR for TS pages
     if (dev && !isServer) {
       config.module.rules.push({
         test: /\.(ts|tsx)$/,
