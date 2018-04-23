@@ -1,10 +1,6 @@
-export default () => {
-  const thisServer = process.env.PUBLIC_WEB_ROOT_URL
-  const dashboardURL = thisServer + "/dashboard"
-  const loginURL =
-    process.env.PUBLIC_API_ROOT_URL + "/api/auth/peril/github/start?redirect=" + encodeURIComponent(dashboardURL)
-  const addPerilURL = process.env.PUBLIC_API_ROOT_URL + "/api/integrate/github"
-  return (
+import { loginURL, addPerilURL } from "lib/routes";
+
+export default () => 
     <html>
       <body>
         <div style={{ textAlign: "center", paddingTop: "90px", fontFamily: "Avenir Next" }}>
@@ -22,4 +18,3 @@ export default () => {
       </body>
     </html>
   )
-}
