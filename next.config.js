@@ -4,7 +4,31 @@ const path = require("path")
 const Dotenv = require("dotenv-webpack")
 
 const currentExport = {
-  webpack: config => {
+  pageExtensions: ["jsx", "js", "ts", "tsx"],
+  webpack: (config, options) => {
+    const { dir, defaultLoaders, dev, isServer } = options
+    config.resolve.extensions = [".ts", ".tsx", ".js", ".json"]
+
+    // HMR
+    if (dev && !isServer) {
+      config.module.rules.push({
+        test: /\.(ts|tsx)$/,
+        loader: "hot-self-accept-loader",
+        include: [path.join(dir, "pages")],
+        options: {
+          extensions: /\.(ts|tsx)$/,
+        },
+      })
+    }
+
+    // Use babel for TSC files
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      include: [dir],
+      exclude: /node_modules/,
+      use: [defaultLoaders.babel],
+    })
+
     config.plugins = config.plugins || []
 
     config.plugins = [
@@ -21,5 +45,4 @@ const currentExport = {
   },
 }
 
-const withTypescript = require("@zeit/next-typescript")
-module.exports = withTypescript(currentExport)
+module.exports = currentExport
