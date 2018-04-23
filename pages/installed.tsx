@@ -1,4 +1,4 @@
-import { loginURL } from "lib/routes"
+import { loginURL } from "../lib/routes"
 
 export default () => (
   <html>

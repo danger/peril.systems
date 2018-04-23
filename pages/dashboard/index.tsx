@@ -1,7 +1,7 @@
 export default () => (
   <html>
     <body>
-      <h2>Hi</h2>
+      <h2>Welcome to the dashboard</h2>
     </body>
   </html>
 )
