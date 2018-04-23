@@ -12,7 +12,6 @@
     "strict": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
     "lib": ["dom", "es2015", "es2016"]
   }
 }
