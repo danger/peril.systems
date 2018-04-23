@@ -1,0 +1,10 @@
+{
+  "name": "peril-systems",
+  "alias": ["staging.peril.systems"],
+  "type": "npm",
+  "public": false,
+  "env": {
+    "PUBLIC_API_ROOT_URL": "https://staging-api.peril.systems",
+    "PUBLIC_WEB_ROOT_URL": "https://staging.peril.systems"
+  }
+}
