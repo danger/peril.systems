@@ -1,5 +1,5 @@
 # source: https://staging-api.peril.systems/api/graphql
-# timestamp: Mon Apr 23 2018 16:06:37 GMT+0100 (BST)
+# timestamp: Tue Apr 24 2018 17:54:24 GMT+0100 (BST)
 
 """An installation of Peril, ideally not too tightly tied to GH"""
 type Installation {
@@ -14,6 +14,9 @@ type Installation {
 
   """The name of a user/org which the installation is attached to"""
   login: String!
+
+  """The URL for an image representing the installation owner"""
+  avatarURL: String!
 
   """A set of per repo rules"""
   repos: JSON!
@@ -31,6 +34,24 @@ type Installation {
   tasks: JSON!
 }
 
+"""A connection to a list of items."""
+type InstallationConnection {
+  """A list of edges."""
+  edges: [InstallationEdge]
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+}
+
+"""An edge in a connection."""
+type InstallationEdge {
+  """A cursor for use in pagination."""
+  cursor: String!
+
+  """The item at the end of the edge"""
+  node: Installation
+}
+
 """
 Basically a way to say this is going to be untyped data (it's normally user input)
 """
@@ -42,6 +63,54 @@ type Mutation {
   the ability to set the URL that Peril should grab data from
   """
   editInstallation(iID: Int!, perilSettingsJSONURL: String!): Installation
+}
+
+"""Information about pagination in a connection.'"""
+type PageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+"""An installation of Peril which isn't set up yet"""
+type PartialInstallation {
+  """The MongoDB ID"""
+  id: String!
+
+  """The installation ID, in the real sense"""
+  iID: Int!
+
+  """The name of the installation owner"""
+  login: String!
+
+  """The URL for an image representing the installation owner"""
+  avatarURL: String!
+}
+
+"""A connection to a list of items."""
+type PartialInstallationConnection {
+  """A list of edges."""
+  edges: [PartialInstallationEdge]
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+}
+
+"""An edge in a connection."""
+type PartialInstallationEdge {
+  """A cursor for use in pagination."""
+  cursor: String!
+
+  """The item at the end of the edge"""
+  node: PartialInstallation
 }
 
 """Root"""
@@ -57,9 +126,43 @@ type User {
   """Use this to show an avatar"""
   avatarURL: String!
 
+  """The installations that a user has access to"""
+  installations(
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+  ): InstallationConnection
+
   """
-  The installations that a user can access, TODO
-  move to be a connection
+  The installations that a user has access to, but hasn't been set up yet
   """
-  installations: [Installation]!
+  installationsToSetUp(
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+  ): PartialInstallationConnection
 }
