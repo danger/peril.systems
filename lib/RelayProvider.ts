@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 // Thank you https://github.com/robrichard
 // https://github.com/robrichard/relay-context-provider
@@ -19,6 +20,10 @@ class RelayProvider extends React.Component<ProviderProps> {
   render() {
     return this.props.children
   }
+}
+
+;(RelayProvider as any).childContextTypes = {
+  relay: PropTypes.object.isRequired,
 }
 
 export default RelayProvider

@@ -16,7 +16,7 @@ export default (ComposedComponent: any, options: { query?: any } = {}) => {
       }
 
       const c = ctx.req.headers.cookie
-      const cookies = c && cookie.parse(c)
+      const cookies = c && typeof c === "string" && cookie.parse(c)
       const jwt = cookies && cookies.jwt
 
       let queryProps = {}
