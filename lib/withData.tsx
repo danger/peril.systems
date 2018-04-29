@@ -3,9 +3,15 @@ import initEnvironment from "./createEnvironment"
 import { fetchQuery } from "react-relay"
 import RelayProvider from "./RelayProvider"
 import cookie from "cookie"
+import { Environment } from "relay-runtime"
+
+interface WithDataProps {
+  jwt: string
+  queryRecords: any
+}
 
 export default (ComposedComponent: any, options: { query?: any } = {}) => {
-  return class WithData extends React.Component {
+  return class WithData extends React.Component<WithDataProps> {
     static displayName = `WithData(${ComposedComponent.displayName})`
 
     static async getInitialProps(ctx: any) {
@@ -44,7 +50,7 @@ export default (ComposedComponent: any, options: { query?: any } = {}) => {
       }
     }
 
-    environment: any
+    environment: Environment
 
     constructor(props: any) {
       super(props)
