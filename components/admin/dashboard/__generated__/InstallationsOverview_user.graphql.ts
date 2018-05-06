@@ -1,8 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type InstallationsToSetUp_user = {
-    readonly installationsToSetUp: ({
+export type InstallationsOverview_user = {
+    readonly installations: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly id: string;
@@ -16,7 +16,7 @@ export type InstallationsToSetUp_user = {
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "InstallationsToSetUp_user",
+  "name": "InstallationsOverview_user",
   "type": "User",
   "metadata": null,
   "argumentDefinitions": [],
@@ -24,10 +24,10 @@ const node: ConcreteFragment = {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "installationsToSetUp",
+      "name": "installations",
       "storageKey": null,
       "args": null,
-      "concreteType": "PartialInstallationConnection",
+      "concreteType": "InstallationConnection",
       "plural": false,
       "selections": [
         {
@@ -36,7 +36,7 @@ const node: ConcreteFragment = {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "PartialInstallationEdge",
+          "concreteType": "InstallationEdge",
           "plural": true,
           "selections": [
             {
@@ -45,7 +45,7 @@ const node: ConcreteFragment = {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "PartialInstallation",
+              "concreteType": "Installation",
               "plural": false,
               "selections": [
                 {
@@ -77,5 +77,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'eead391bac049b31a863dd21e5e4cd22';
+(node as any).hash = 'f7e7e8256f491907979073bac9564331';
 export default node;

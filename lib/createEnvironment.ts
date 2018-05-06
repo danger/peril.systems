@@ -3,7 +3,7 @@ declare const process: any
 import { Environment, Network, RecordSource, Store } from "relay-runtime"
 import fetch from "isomorphic-unfetch"
 
-let relayEnvironment: any = null
+let relayEnvironment: Environment | null = null
 
 interface JWTAble {
   jwt: string | undefined

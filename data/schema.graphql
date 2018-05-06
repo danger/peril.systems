@@ -1,10 +1,12 @@
 # source: https://staging-api.peril.systems/api/graphql
-# timestamp: Tue Apr 24 2018 17:54:24 GMT+0100 (BST)
+# timestamp: Sun Apr 29 2018 09:28:29 GMT-0400 (EDT)
+
+scalar Date
 
 """An installation of Peril, ideally not too tightly tied to GH"""
-type Installation {
+type Installation implements Node {
   """The MongoDB ID"""
-  id: String!
+  id: ID!
 
   """The installation ID, in the real sense"""
   iID: Int!
@@ -32,6 +34,25 @@ type Installation {
 
   """Tasks which you can schedule to run in the future"""
   tasks: JSON!
+
+  """Tasks which you can schedule to run in the future"""
+  webhooks(
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+  ): RecordedWebhookConnection
 }
 
 """A connection to a list of items."""
@@ -63,6 +84,15 @@ type Mutation {
   the ability to set the URL that Peril should grab data from
   """
   editInstallation(iID: Int!, perilSettingsJSONURL: String!): Installation
+
+  """Sets the installation to record webhooks for the next 5m"""
+  makeInstallationRecord(iID: Int!): Installation
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
 }
 
 """Information about pagination in a connection.'"""
@@ -81,9 +111,9 @@ type PageInfo {
 }
 
 """An installation of Peril which isn't set up yet"""
-type PartialInstallation {
+type PartialInstallation implements Node {
   """The MongoDB ID"""
-  id: String!
+  id: ID!
 
   """The installation ID, in the real sense"""
   iID: Int!
@@ -115,7 +145,53 @@ type PartialInstallationEdge {
 
 """Root"""
 type Query {
+  """The logged in user"""
   me: User
+
+  """Get information about an installation"""
+  installation(iID: Int!): Installation
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+"""A stored webhook from GitHub so we can re-send it in the future"""
+type RecordedWebhook {
+  """Installation ID"""
+  iID: Int!
+
+  """A string like 'pull_request.closed' to show the preview"""
+  event: String!
+
+  """The webhook JSON, it will not be included in collections of webhooks"""
+  json: JSON
+
+  """The UUID from GitHub for the webhook"""
+  eventID: String!
+
+  """The time when the recording was made"""
+  createdAt: Date!
+}
+
+"""A connection to a list of items."""
+type RecordedWebhookConnection {
+  """A list of edges."""
+  edges: [RecordedWebhookEdge]
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+}
+
+"""An edge in a connection."""
+type RecordedWebhookEdge {
+  """A cursor for use in pagination."""
+  cursor: String!
+
+  """The item at the end of the edge"""
+  node: RecordedWebhook
 }
 
 """Someone logged in to the API, all user data is stored inside the JWT"""

@@ -3,9 +3,15 @@ import initEnvironment from "./createEnvironment"
 import { fetchQuery } from "react-relay"
 import RelayProvider from "./RelayProvider"
 import cookie from "cookie"
+import { Environment } from "relay-runtime"
 
-export default (ComposedComponent: any, options: { query?: any } = {}) => {
-  return class WithData extends React.Component {
+interface WithDataProps {
+  jwt: string
+  queryRecords: any
+}
+
+export default (ComposedComponent: any, options: { query?: any; variables?: any } = {}) => {
+  return class WithData extends React.Component<WithDataProps> {
     static displayName = `WithData(${ComposedComponent.displayName})`
 
     static async getInitialProps(ctx: any) {
@@ -24,9 +30,7 @@ export default (ComposedComponent: any, options: { query?: any } = {}) => {
       const environment = initEnvironment({ jwt })
 
       if (options.query) {
-        // Provide the `url` prop data in case a graphql query uses it
-        // const url = { query: ctx.query, pathname: ctx.pathname }
-        const variables = {}
+        const variables = (options.variables && options.variables(ctx)) || {}
         // TODO: Consider RelayQueryResponseCache
         // https://github.com/facebook/relay/issues/1687#issuecomment-302931855
         queryProps = await fetchQuery(environment, options.query, variables)
@@ -44,7 +48,7 @@ export default (ComposedComponent: any, options: { query?: any } = {}) => {
       }
     }
 
-    environment: any
+    environment: Environment
 
     constructor(props: any) {
       super(props)

@@ -9,18 +9,6 @@ const currentExport = {
     const { dir, defaultLoaders, dev, isServer } = options
     config.resolve.extensions = [".ts", ".tsx", ".js", ".jsx", ".json"]
 
-    // HMR for TS pages
-    if (dev && !isServer) {
-      config.module.rules.push({
-        test: /\.(ts|tsx)$/,
-        loader: "hot-self-accept-loader",
-        include: [path.join(dir, "pages")],
-        options: {
-          extensions: /\.(ts|tsx)$/,
-        },
-      })
-    }
-
     // Use babel for TSC files
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
@@ -28,6 +16,14 @@ const currentExport = {
       exclude: /node_modules/,
       use: [defaultLoaders.babel],
     })
+
+    if (dev && !isServer) {
+      const HMR = config.module.rules.find(r => r.loader === "hot-self-accept-loader")
+      if (HMR) {
+        HMR.test = /\.(ts|tsx)$/
+        HMR.options.extensions = /\.(ts|tsx)$/
+      }
+    }
 
     config.plugins = config.plugins || []
 
