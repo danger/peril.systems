@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "concurrently --kill-others 'yarn next' 'yarn relay --watch'",
+    "dev": "concurrently --kill-others 'yarn next --inspect' 'yarn relay --watch'",
     "build": "next build",
     "start": "next start",
     "schema:download": "yarn run schema:download:gql && yarn run schema:download:json",
@@ -42,7 +42,7 @@
     "isomorphic-unfetch": "^2.0.0",
     "jest": "^22.4.3",
     "lint-staged": "^7.0.4",
-    "next": "^6.0.0",
+    "next": "^6.0.1-canary.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/react-relay-1.5.0-artsy.5.tgz",

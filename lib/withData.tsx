@@ -10,7 +10,7 @@ interface WithDataProps {
   queryRecords: any
 }
 
-export default (ComposedComponent: any, options: { query?: any } = {}) => {
+export default (ComposedComponent: any, options: { query?: any; variables?: any } = {}) => {
   return class WithData extends React.Component<WithDataProps> {
     static displayName = `WithData(${ComposedComponent.displayName})`
 
@@ -30,9 +30,7 @@ export default (ComposedComponent: any, options: { query?: any } = {}) => {
       const environment = initEnvironment({ jwt })
 
       if (options.query) {
-        // Provide the `url` prop data in case a graphql query uses it
-        // const url = { query: ctx.query, pathname: ctx.pathname }
-        const variables = {}
+        const variables = (options.variables && options.variables(ctx)) || {}
         // TODO: Consider RelayQueryResponseCache
         // https://github.com/facebook/relay/issues/1687#issuecomment-302931855
         queryProps = await fetchQuery(environment, options.query, variables)

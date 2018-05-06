@@ -24,8 +24,9 @@ fragment InstallationsToSetUp_user on User {
   installationsToSetUp {
     edges {
       node {
-        iID
+        id
         login
+        __id: id
       }
     }
   }
@@ -35,8 +36,9 @@ fragment InstallationsOverview_user on User {
   installations {
     edges {
       node {
-        iID
+        id
         login
+        __id: id
       }
     }
   }
@@ -55,7 +57,7 @@ v1 = [
   {
     "kind": "ScalarField",
     "alias": null,
-    "name": "iID",
+    "name": "id",
     "args": null,
     "storageKey": null
   },
@@ -65,6 +67,13 @@ v1 = [
     "name": "login",
     "args": null,
     "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": "__id",
+    "name": "id",
+    "args": null,
+    "storageKey": null
   }
 ];
 return {
@@ -72,7 +81,7 @@ return {
   "operationKind": "query",
   "name": "dashboard_indexQuery",
   "id": null,
-  "text": "query dashboard_indexQuery {\n  me {\n    ...InstallationsToSetUp_user\n    ...InstallationsOverview_user\n    name\n  }\n}\n\nfragment InstallationsToSetUp_user on User {\n  installationsToSetUp {\n    edges {\n      node {\n        iID\n        login\n      }\n    }\n  }\n}\n\nfragment InstallationsOverview_user on User {\n  installations {\n    edges {\n      node {\n        iID\n        login\n      }\n    }\n  }\n}\n",
+  "text": "query dashboard_indexQuery {\n  me {\n    ...InstallationsToSetUp_user\n    ...InstallationsOverview_user\n    name\n  }\n}\n\nfragment InstallationsToSetUp_user on User {\n  installationsToSetUp {\n    edges {\n      node {\n        id\n        login\n        __id: id\n      }\n    }\n  }\n}\n\nfragment InstallationsOverview_user on User {\n  installations {\n    edges {\n      node {\n        id\n        login\n        __id: id\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

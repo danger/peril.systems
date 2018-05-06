@@ -5,7 +5,7 @@ export type InstallationsToSetUp_user = {
     readonly installationsToSetUp: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
-                readonly iID: number;
+                readonly id: string;
                 readonly login: string;
             }) | null;
         }) | null> | null;
@@ -51,7 +51,7 @@ const node: ConcreteFragment = {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "iID",
+                  "name": "id",
                   "args": null,
                   "storageKey": null
                 },
@@ -59,6 +59,13 @@ const node: ConcreteFragment = {
                   "kind": "ScalarField",
                   "alias": null,
                   "name": "login",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": "__id",
+                  "name": "id",
                   "args": null,
                   "storageKey": null
                 }
@@ -70,5 +77,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '3b2f578a362db60555ef626ab867e25d';
+(node as any).hash = 'eead391bac049b31a863dd21e5e4cd22';
 export default node;

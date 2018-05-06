@@ -24,10 +24,9 @@ const InstallationsOverview: any = (props: Props) => {
         <ul>
           {installations.map(i => (
             <li>
-              {i.login}{" "}
-              <Link href={"/dashboard/installation?iID=" + i.iID}>
-                <a>here</a>
-              </Link>{" "}
+              <Link href={"/dashboard/installation?id=" + i.id}>
+                <a>{i.login}</a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -43,7 +42,7 @@ export default createFragmentContainer<Props>(
       installations {
         edges {
           node {
-            iID
+            id
             login
           }
         }

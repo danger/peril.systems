@@ -5415,9 +5415,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-next@^6.0.0:
-  version "6.0.0-canary.7"
-  resolved "https://registry.yarnpkg.com/next/-/next-6.0.0-canary.7.tgz#9efbcdc6efba1dde4d480e61fbdba5b807e1ff1a"
+next@^6.0.1-canary.0:
+  version "6.0.1-canary.0"
+  resolved "https://registry.yarnpkg.com/next/-/next-6.0.1-canary.0.tgz#172745cd77250fe90bb6b1f0f4d7ba81e68b5088"
   dependencies:
     "@babel/core" "7.0.0-beta.42"
     "@babel/plugin-proposal-class-properties" "7.0.0-beta.42"
@@ -5453,7 +5453,7 @@ next@^6.0.0:
     path-to-regexp "2.1.0"
     prop-types "15.6.0"
     prop-types-exact "1.1.1"
-    react-hot-loader "4.1.1"
+    react-hot-loader "4.1.2"
     recursive-copy "2.0.6"
     resolve "1.5.0"
     send "0.16.1"
@@ -5462,7 +5462,7 @@ next@^6.0.0:
     touch "3.1.0"
     uglifyjs-webpack-plugin "1.1.6"
     unfetch "3.0.0"
-    update-check "1.3.2"
+    update-check "1.4.0"
     url "0.11.0"
     uuid "3.1.0"
     walk "2.3.9"
@@ -6271,20 +6271,20 @@ react-dom@^16.3.2:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-hot-loader@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.1.1.tgz#693499a6414b6dc6880287e254322a9d3155e944"
+react-hot-loader@4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.1.2.tgz#5e8025f5bc5605506586b46eb2c6cc4006fd54d7"
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
     hoist-non-react-statics "^2.5.0"
     prop-types "^15.6.1"
-    react-lifecycles-compat "^2.0.0"
+    react-lifecycles-compat "^3.0.2"
     shallowequal "^1.0.2"
 
-react-lifecycles-compat@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.2.tgz#00a23160eec17a43b94dd74f95d44a1a2c3c5ec1"
+react-lifecycles-compat@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.2.tgz#7279047275bd727a912e25f734c0559527e84eff"
 
 "react-relay@https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/react-relay-1.5.0-artsy.5.tgz":
   version "1.5.0-artsy.5"
@@ -7687,9 +7687,9 @@ unzip-response@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/unzip-response/-/unzip-response-2.0.1.tgz#d2f0f737d16b0615e72a6935ed04214572d56f97"
 
-update-check@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/update-check/-/update-check-1.3.2.tgz#460f9e9ab24820367f3edbeb4d4142d9936ff171"
+update-check@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/update-check/-/update-check-1.4.0.tgz#800235ba1bd1ace324e646eb055799a09aed8b28"
   dependencies:
     registry-auth-token "3.3.2"
     registry-url "3.1.0"
