@@ -1,15 +1,11 @@
 import { createFragmentContainer, graphql } from "react-relay"
 import { InstallationsOverview_user } from "./__generated__/InstallationsOverview_user.graphql"
 import Link from "next/link"
+import { notEmpty } from "../../../lib/notEmpty"
 
 interface Props {
   user: InstallationsOverview_user
 }
-
-function notEmpty<T>(value: T | null | undefined): value is T {
-  return value !== null && value !== undefined
-}
-
 const InstallationsOverview: any = (props: Props) => {
   if (!props.user.installations) {
     return <p>Loading</p>
