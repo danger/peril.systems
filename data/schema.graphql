@@ -1,5 +1,5 @@
-# source: https://staging-api.peril.systems/api/graphql
-# timestamp: Sun Apr 29 2018 09:28:29 GMT-0400 (EDT)
+# source: http://localhost:5000/api/graphql
+# timestamp: Sun May 06 2018 21:44:44 GMT-0400 (EDT)
 
 scalar Date
 
@@ -87,6 +87,9 @@ type Mutation {
 
   """Sets the installation to record webhooks for the next 5m"""
   makeInstallationRecord(iID: Int!): Installation
+
+  """Send webhook"""
+  sendWebhookForInstallation(iID: Int!, eventID: String!): RecordedWebhook
 }
 
 """An object with an ID"""

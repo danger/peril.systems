@@ -2,6 +2,7 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type InstallationRules_installation = {
+    readonly iID: number;
     readonly repos: any;
     readonly rules: any;
     readonly login: string;
@@ -17,6 +18,13 @@ const node: ConcreteFragment = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "iID",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -54,5 +62,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '930b2f82ed7dcc14263a3769d5cb953d';
+(node as any).hash = '807c02da0bcbd83aa30ee7e6d3f3e9ff';
 export default node;

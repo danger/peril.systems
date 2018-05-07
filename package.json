@@ -12,10 +12,8 @@
     "build": "next build",
     "start": "next start",
     "schema:download": "yarn run schema:download:gql && yarn run schema:download:json",
-    "schema:download:gql":
-      "yarn graphql get-schema -e https://staging-api.peril.systems/api/graphql -o data/schema.graphql",
-    "schema:download:json":
-      "yarn graphql get-schema -e https://staging-api.peril.systems/api/graphql -o data/schema.json --json",
+    "schema:download:gql": "yarn graphql get-schema -e http://localhost:5000/api/graphql -o data/schema.graphql",
+    "schema:download:json": "yarn graphql get-schema -e http://localhost:5000/api/graphql -o data/schema.json --json",
     "relay":
       "yarn relay-compiler --src ./ --include 'pages/**/*' 'components/**/*'  --schema data/schema.graphql --language typescript"
   },
