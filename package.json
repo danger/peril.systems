@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "concurrently --kill-others 'yarn next --inspect' 'yarn relay --watch'",
+    "dev": "concurrently --kill-others 'yarn next --inspect -p 9002' 'yarn relay --watch'",
     "build": "next build",
     "start": "next start",
     "schema:download": "yarn run schema:download:gql && yarn run schema:download:json",
