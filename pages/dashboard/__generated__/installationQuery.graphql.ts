@@ -30,6 +30,7 @@ fragment InstallationRules_installation on Installation {
   repos
   rules
   login
+  tasks
   perilSettingsJSONURL
   __id: id
 }
@@ -84,7 +85,7 @@ return {
   "operationKind": "query",
   "name": "installationQuery",
   "id": null,
-  "text": "query installationQuery(\n  $installationID: ID!\n) {\n  node(id: $installationID) {\n    __typename\n    id\n    ...InstallationRules_installation\n    ...InstallationWebhooks_installation\n    __id: id\n  }\n}\n\nfragment InstallationRules_installation on Installation {\n  iID\n  repos\n  rules\n  login\n  perilSettingsJSONURL\n  __id: id\n}\n\nfragment InstallationWebhooks_installation on Installation {\n  iID\n  webhooks {\n    edges {\n      node {\n        event\n        eventID\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query installationQuery(\n  $installationID: ID!\n) {\n  node(id: $installationID) {\n    __typename\n    id\n    ...InstallationRules_installation\n    ...InstallationWebhooks_installation\n    __id: id\n  }\n}\n\nfragment InstallationRules_installation on Installation {\n  iID\n  repos\n  rules\n  login\n  tasks\n  perilSettingsJSONURL\n  __id: id\n}\n\nfragment InstallationWebhooks_installation on Installation {\n  iID\n  webhooks {\n    edges {\n      node {\n        event\n        eventID\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -170,6 +171,13 @@ return {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "login",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "tasks",
                 "args": null,
                 "storageKey": null
               },

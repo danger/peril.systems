@@ -6,6 +6,7 @@ export type InstallationRules_installation = {
     readonly repos: any;
     readonly rules: any;
     readonly login: string;
+    readonly tasks: any;
     readonly perilSettingsJSONURL: string;
 };
 
@@ -49,6 +50,13 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "tasks",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "perilSettingsJSONURL",
       "args": null,
       "storageKey": null
@@ -62,5 +70,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '807c02da0bcbd83aa30ee7e6d3f3e9ff';
+(node as any).hash = '6b1a709e06ebcdbbb0f9bf2c71480aed';
 export default node;

@@ -14,6 +14,7 @@ const InstallationRules: any = (props: Props & { relay: RelayProp }) => {
   return (
     <div>
       <h3>Rules KO!</h3>
+      <h4>Sure?</h4>
       <p>
         <pre>
           <code>{JSON.stringify(props.installation.rules, null, "  ")}</code>
@@ -22,6 +23,11 @@ const InstallationRules: any = (props: Props & { relay: RelayProp }) => {
       <p>
         <pre>
           <code>{JSON.stringify(props.installation.repos, null, "  ")}</code>
+        </pre>
+      </p>
+      <p>
+        <pre>
+          <code>{JSON.stringify(props.installation.tasks, null, "  ")}</code>
         </pre>
       </p>
       <p>Path: {props.installation.perilSettingsJSONURL}</p>
@@ -42,6 +48,7 @@ export default createFragmentContainer<Props>(
       repos
       rules
       login
+      tasks
       perilSettingsJSONURL
     }
   `

@@ -14,40 +14,36 @@
     "schema:download": "yarn run schema:download:gql && yarn run schema:download:json",
     "schema:download:gql": "yarn graphql get-schema -e http://localhost:5000/api/graphql -o data/schema.graphql",
     "schema:download:json": "yarn graphql get-schema -e http://localhost:5000/api/graphql -o data/schema.json --json",
-    "relay":
-      "yarn relay-compiler --src ./ --include 'pages/**/*' 'components/**/*'  --schema data/schema.graphql --language typescript"
+    "relay": "yarn relay-compiler --src ./ --include 'pages/**/*' 'components/**/*'  --schema data/schema.graphql --language typescript"
   },
   "resolutions": {
     "graphql": "^0.12.3",
-    "babel-plugin-relay":
-      "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/babel-plugin-relay-1.5.0-artsy.5.tgz",
-    "relay-compiler":
-      "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/relay-compiler-1.5.0-artsy.5.tgz",
+    "babel-plugin-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/babel-plugin-relay-1.5.0-artsy.5.tgz",
+    "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/relay-compiler-1.5.0-artsy.5.tgz",
     "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/relay-runtime-1.5.0-artsy.5.tgz",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/react-relay-1.5.0-artsy.5.tgz"
   },
   "dependencies": {
-    "@babel/preset-typescript": "^7.0.0-beta.42",
-    "@types/next": "^2.4.9",
+    "@babel/preset-typescript": "^7.0.0-beta.49",
+    "@types/next": "^2.4.11",
     "@types/react-dom": "^16.0.5",
-    "@types/react-relay": "^1.3.4",
+    "@types/react-relay": "^1.3.6",
+    "@zeit/next-typescript": "^1.0.1",
     "babel-plugin-module-resolver": "^3.1.1",
-    "babel-plugin-relay":
-      "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/babel-plugin-relay-1.5.0-artsy.5.tgz",
+    "babel-plugin-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/babel-plugin-relay-1.5.0-artsy.5.tgz",
     "dotenv-webpack": "^1.5.5",
     "husky": "^0.14.3",
     "install": "^0.11.0",
     "isomorphic-unfetch": "^2.0.0",
     "jest": "^22.4.3",
     "lint-staged": "^7.0.4",
-    "next": "^6.0.1-canary.0",
+    "next": "^6.0.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/react-relay-1.5.0-artsy.5.tgz",
-    "relay-compiler":
-      "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/relay-compiler-1.5.0-artsy.5.tgz",
+    "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.5/relay-compiler-1.5.0-artsy.5.tgz",
     "relay-compiler-language-typescript": "^0.9.0",
-    "ts-jest": "^22.4.4",
+    "ts-jest": "^22.4.6",
     "typescript": "^2.8.3"
   },
   "devDependencies": {
@@ -72,12 +68,30 @@
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(.test)\\.(ts|tsx)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
   },
   "lint-staged": {
-    "*.json": ["yarn prettier --write", "git add"],
-    "*.ts": ["tslint --fix", "yarn prettier --write", "git add"],
-    "*test.ts": ["jest -u"],
-    "*.md": ["yarn prettier --write", "git add"]
+    "*.json": [
+      "yarn prettier --write",
+      "git add"
+    ],
+    "*.ts": [
+      "tslint --fix",
+      "yarn prettier --write",
+      "git add"
+    ],
+    "*test.ts": [
+      "jest -u"
+    ],
+    "*.md": [
+      "yarn prettier --write",
+      "git add"
+    ]
   }
 }
