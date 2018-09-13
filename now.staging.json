@@ -1,0 +1,19 @@
+{
+  "name": "peril-api",
+  "alias": ["staging-web.peril.systems"],
+  "type": "npm",
+  "public": false,
+  "static": {
+    "trailingSlash": false,
+    "public": "public"
+  },
+  "files": [
+    "public"
+  ],
+  "env": {
+    "PRODUCTION": "false",
+    "PUBLIC_API_ROOT_URL": "https://staging-api.peril.systems",
+    "PUBLIC_WEB_ROOT_URL": "https://staging.peril.systems",
+    "PUBLIC_GITHUB_APP_URL": "https://github.com/apps/peril-staging"
+  }
+}

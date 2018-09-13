@@ -1,0 +1,29 @@
+{
+  "name": "peril.systems",
+  "description": "The user-facing docs for Peril",
+  "license": "MIT",
+  "scripts": {
+    "start": "gatsby develop",
+    "now-start": "serve",
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "type-check": "tsc --noEmit --pretty",
+    "deploy:staging": "yarn type-check && nf run scripts/deploy-staging.sh",
+    "logs:staging": "/usr/local/bin/now logs --team peril staging-api.peril.systems"
+  },
+  "dependencies": {
+    "@heroku/foreman": "^2.0.2",
+    "@types/react": "^16.4.14",
+    "@types/styled-components": "^3.0.1",
+    "babel-plugin-styled-components": "^1.7.1",
+    "gatsby": "next",
+    "gatsby-plugin-styled-components": "^3.0.0-rc.5",
+    "gatsby-plugin-typescript": "^2.0.0-rc.5",
+    "prettier": "^1.14.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "styled-components": "^4.0.0-beta.4",
+    "typescript": "^3.0.3"
+  }
+}
